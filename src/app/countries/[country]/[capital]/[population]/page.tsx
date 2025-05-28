@@ -8,7 +8,7 @@ interface CountryParams {
 }
 
 type PageProps = {
-  params: CountryParams;
+  params: Promise<CountryParams>;
 };
 
 const countryFlags: Record<string, string> = {
@@ -33,8 +33,9 @@ const FlagImage: React.FC<{ flagUrl: string; country: string }> = ({ flagUrl, co
   )
 );
 
-const Page: React.FC<PageProps> = async ({ params }) => {
-  const { country, capital, population } = await params;
+const Page = async ({ params }: PageProps) => {
+  const resolvedParams = await params;
+  const { country, capital, population } = resolvedParams;
   const flagUrl = countryFlags[country] || '';
 
   if (!country || !capital || !population) {

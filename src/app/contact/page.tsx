@@ -1,14 +1,19 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+
+interface FormData {
+  name: string;
+  email: string;
+}
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -16,7 +21,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     alert("Thank you for reaching out! We will get back to you soon.");
