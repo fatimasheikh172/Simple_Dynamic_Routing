@@ -16,7 +16,7 @@ const countryFlags: Record<string, string> = {
   Maldives: '/images/Maldives flag.jpg',
   Turkey: '/images/TurkeyFlag.jpg',
   Afghanistan: '/images/Afghanistan-flag.jpg',
-  India: '/images/India-flag.jpg',
+  India: '/images/india-flag.jpg',
 };
 
 const FlagImage: React.FC<{ flagUrl: string; country: string }> = ({ flagUrl, country }) => (
